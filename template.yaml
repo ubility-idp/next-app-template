@@ -5,9 +5,9 @@ metadata:
   title: Create Next Application
   description: Create a starting Next Application Project
   tags:
-    - Typescript
-    - NextJS
-    - Tailwind CSS
+    - typescript
+    - next js
+    - tailwind css
 spec:
   owner: ibrahimnasri24@gmail.com
   type: website
