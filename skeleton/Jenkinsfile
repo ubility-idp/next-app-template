@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy the Artifact on Kubernetes') {
             steps {
-                sh 'az aks get-credentials --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME'
+                sh 'az aks get-credentials --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME  --overwrite-existing'
                 sh 'originalfile="manifests/deployment.yaml";tmpfile=$(mktemp);cp --attributes-only --preserve $originalfile $tmpfile;export BUILD_NUMBER="$BUILD_NUMBER";echo "[INFO] Build Number $BUILD_NUMBER are deploying now"; cat $originalfile | envsubst > $tmpfile && mv $tmpfile $originalfile'
                 sh 'kubectl delete -R -f manifests --ignore-not-found=true'
                 sh 'sleep 30s'
